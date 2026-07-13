@@ -4,8 +4,6 @@ sqoop import \
 --connect jdbc:mysql://localhost/CovidDB \
 --username your_username \
 --password your_password \
---table CovidData \
+--query "SELECT * FROM CovidData WHERE continent='Asia' AND \$CONDITIONS" \
 -m 1 \
---target-dir /CovidHDFS
-
-hdfs dfs -ls /CovidHDFS
+--target-dir /SqoopCovidAsiaData
